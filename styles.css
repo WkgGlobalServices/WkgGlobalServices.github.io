@@ -15,7 +15,7 @@ body {
   z-index: 0;
 }
 
-/* --- Partículas sutiles animadas en fondo solo en body::before --- */
+/* --- Fondo partículas animadas --- */
 body::before {
   content: "";
   position: fixed;
@@ -34,27 +34,21 @@ body::before {
 
 @keyframes particlesMove {
   0% {
-    background-position:
-      10% 20%,
-      70% 80%,
-      40% 50%;
+    background-position: 10% 20%, 70% 80%, 40% 50%;
   }
   100% {
-    background-position:
-      90% 80%,
-      30% 20%,
-      60% 70%;
+    background-position: 90% 80%, 30% 20%, 60% 70%;
   }
 }
 
-/* --- Iconos .accent-color sin animación, solo color plano --- */
+/* --- Iconos en color principal --- */
 .accent-color {
   color: #4f46e5;
   text-shadow: none !important;
   animation: none !important;
 }
 
-/* --- Botones con brillo suave en todo el botón, sin sombra atrás --- */
+/* --- Botones base --- */
 button,
 a.bg-accent-color {
   display: inline-block;
@@ -66,14 +60,11 @@ a.bg-accent-color {
   border: none;
   cursor: pointer;
   user-select: none;
-  transition:
-    background-color 0.3s ease,
-    box-shadow 0.4s ease,
-    transform 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.4s ease, transform 0.3s ease;
   position: relative;
   overflow: hidden;
-  /* Brillo suave en todo el botón */
   box-shadow: inset 0 0 12px 2px rgba(79, 70, 229, 0.8);
+  font-size: 1rem;
 }
 
 button:hover,
@@ -89,7 +80,7 @@ a.bg-accent-color:focus-visible {
   outline-offset: 2px;
 }
 
-/* Ripple effect on buttons */
+/* Ripple effect */
 button::after,
 a.bg-accent-color::after {
   content: "";
@@ -114,15 +105,14 @@ a.bg-accent-color:active::after {
   transition: 0s;
 }
 
-/* --- Cards con brillo en todo el fondo, sin sombras atrás, sin esquinas --- */
+/* --- Cards --- */
 .animated-card {
-  position: relative;
   background-color: #1f2937;
   border-radius: 0.5rem;
   padding: 2rem;
   text-align: center;
-  cursor: pointer;
   overflow: hidden;
+  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: inset 0 0 8px 1px rgba(79, 70, 229, 0.5);
   border: 1px solid rgba(79, 70, 229, 0.3);
@@ -138,30 +128,27 @@ a.bg-accent-color:active::after {
   outline: none;
 }
 
-/* --- Fade-in para scroll --- */
+/* --- Fade-in scroll --- */
 .fade-in {
   opacity: 0;
   transform: translateY(25px);
-  transition:
-    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
-
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* --- Grid responsive para servicios --- */
+/* --- Grid responsive --- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 2.5rem;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -173,15 +160,17 @@ a.bg-accent-color:active::after {
   }
 }
 
-/* --- Títulos --- */
+/* --- Títulos responsivos --- */
 h2 {
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  margin-bottom: 2rem;
   font-weight: 700;
   text-align: center;
+  line-height: 1.2;
+  padding: 0 1rem;
 }
 
-/* --- Inputs y textarea --- */
+/* --- Inputs y formularios --- */
 input[type="text"],
 input[type="email"],
 textarea {
@@ -192,28 +181,25 @@ textarea {
   background-color: #1f2937;
   color: #e0e0e0;
   font-size: 1rem;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
   resize: vertical;
   font-family: inherit;
+  transition: border-color 0.3s, background-color 0.3s;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
+input:focus,
 textarea:focus {
   outline: none;
   border-color: #4f46e5;
   background-color: #374151;
 }
 
-/* --- Scrollbar personalizado --- */
+/* --- Scrollbar --- */
 body::-webkit-scrollbar {
   width: 8px;
 }
-
 body::-webkit-scrollbar-track {
   background: #121212;
 }
-
 body::-webkit-scrollbar-thumb {
   background-color: #4f46e5;
   border-radius: 4px;
@@ -230,12 +216,10 @@ body::-webkit-scrollbar-thumb {
   z-index: 9999;
   transition: opacity 1s ease;
 }
-
 #loader.fade-out {
   opacity: 0;
   pointer-events: none;
 }
-
 .loader-content {
   text-align: center;
   color: #4f46e5;
@@ -243,14 +227,13 @@ body::-webkit-scrollbar-thumb {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+  padding: 1rem;
 }
-
 .loader-logo {
-  height: 70px;
+  height: 60px;
   width: auto;
   animation: pulseZoom 2.5s ease-in-out infinite;
 }
-
 @keyframes pulseZoom {
   0%, 100% {
     transform: scale(1);
@@ -261,7 +244,6 @@ body::-webkit-scrollbar-thumb {
     opacity: 0.7;
   }
 }
-
 .spinner {
   border: 4px solid rgba(79, 70, 229, 0.2);
   border-top: 4px solid #4f46e5;
@@ -270,9 +252,19 @@ body::-webkit-scrollbar-thumb {
   height: 42px;
   animation: spin 1.3s linear infinite;
 }
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* --- Responsive container padding --- */
+section {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 6rem 2rem;
   }
 }

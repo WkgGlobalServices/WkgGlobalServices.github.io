@@ -42,66 +42,53 @@
     />
   </div>
 
-  <!-- Navbar -->
-  <header class="fixed top-0 left-0 right-0 z-40 bg-gray-900 shadow-lg">
-    <nav
-      class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3"
+<!-- Navbar -->
+<header class="fixed top-0 left-0 right-0 z-40 bg-gray-900 shadow-lg">
+  <nav class="max-w-7xl mx-auto flex flex-wrap items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
+
+    <!-- Logo + Nombre -->
+    <a href="#" class="flex items-center space-x-3">
+      <img
+        src="https://i.imgur.com/mGGnbIZ.png"
+        alt="Logo WKG Global Services"
+        class="h-10 sm:h-12 w-auto"
+        onerror="this.onerror=null;this.src='https://placehold.co/100x30/121212/4f46e5?text=WKG+Logo';"
+      />
+      <span class="text-white font-bold text-lg sm:text-xl select-none">
+        WKG Global Services
+      </span>
+    </a>
+
+    <!-- Botón hamburguesa en móviles -->
+    <button
+      id="nav-toggle"
+      class="md:hidden text-white focus:outline-none"
+      aria-label="Toggle navigation"
     >
-      <a href="#" class="flex items-center space-x-3">
-        <img
-          src="https://i.imgur.com/mGGnbIZ.png"
-          alt="Logo WKG Global Services"
-          class="h-12 w-auto"
-          onerror="this.onerror=null;this.src='https://placehold.co/100x30/121212/4f46e5?text=WKG+Logo';"
-        />
-        <span class="text-white font-bold text-xl select-none"
-          >WKG Global Services</span
-        >
-      </a>
+      <i class="fas fa-bars fa-lg"></i>
+    </button>
 
-      <button
-        id="nav-toggle"
-        class="md:hidden text-white focus:outline-none"
-        aria-label="Toggle navigation"
-      >
-        <i class="fas fa-bars fa-lg"></i>
-      </button>
+    <!-- Menú de navegación -->
+    <ul
+      id="nav-menu"
+      class="hidden w-full md:flex md:items-center md:space-x-8 md:w-auto mt-4 md:mt-0 flex-col md:flex-row text-white font-semibold text-base"
+    >
+      <li class="py-2 md:py-0">
+        <a href="#esencia" class="hover:text-indigo-400 transition duration-300">Nuestra Esencia</a>
+      </li>
+      <li class="py-2 md:py-0">
+        <a href="#por-que-elegirnos" class="hover:text-indigo-400 transition duration-300">La Diferencia</a>
+      </li>
+      <li class="py-2 md:py-0">
+        <a href="#marcas" class="hover:text-indigo-400 transition duration-300">Marcas</a>
+      </li>
+      <li class="py-2 md:py-0">
+        <a href="#contacto" class="hover:text-indigo-400 transition duration-300">Contacto</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 
-      <ul
-        id="nav-menu"
-        class="hidden md:flex space-x-8 text-white font-semibold"
-      >
-        <li>
-          <a
-            href="#esencia"
-            class="hover:text-indigo-400 transition"
-            >Nuestra Esencia</a
-          >
-        </li>
-        <li>
-          <a
-            href="#por-que-elegirnos"
-            class="hover:text-indigo-400 transition"
-            >La Diferencia</a
-          >
-        </li>
-        <li>
-          <a
-            href="#marcas"
-            class="hover:text-indigo-400 transition"
-            >Marcas</a
-          >
-        </li>
-        <li>
-          <a
-            href="#contacto"
-            class="hover:text-indigo-400 transition"
-            >Contacto</a
-          >
-        </li>
-      </ul>
-    </nav>
-  </header>
 
   <!-- Header / Hero -->
   <header
@@ -130,58 +117,54 @@
       >Contáctanos</a
     >
   </header>
+<!-- Nuestra Esencia -->
+<section id="esencia" class="py-16 sm:py-20 bg-gray-800 fade-in">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    
+    <!-- Texto -->
+    <div class="text-center lg:text-left">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+        Nuestra Esencia: Experiencia que Inspira Confianza
+      </h2>
+      <div class="w-20 sm:w-24 h-1 bg-accent-color mb-6 sm:mb-8 mx-auto lg:mx-0"></div>
+      <p class="text-base sm:text-lg text-gray-300 leading-relaxed">
+        En <span class="accent-color font-semibold">WKG Global Services</span>, no solo implementamos tecnología; construimos soluciones integrales.
+        Nuestra pasión por la innovación y el compromiso con la calidad nos convierten en los aliados estratégicos que tu empresa necesita.
+        <br /><br />
+        Combinamos años de experiencia con un enfoque personalizado, diseñando y ejecutando proyectos que garantizan la eficiencia, seguridad y crecimiento de tu infraestructura tecnológica.
+      </p>
+    </div>
 
-  <!-- Nuestra Esencia -->
-  <section id="esencia" class="py-20 bg-gray-800 fade-in">
-    <div
-      class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-    >
-      <div class="text-center lg:text-left">
-        <h2
-          class="text-3xl font-bold text-white mb-4"
-        >
-          Nuestra Esencia: Experiencia que Inspira Confianza
-        </h2>
-        <div class="w-24 h-1 bg-accent-color mb-8 mx-auto lg:mx-0"></div>
-        <p class="text-lg text-gray-300 leading-relaxed">
-          En <span class="accent-color font-semibold"
-            >WKG Global Services</span
-          >, no solo implementamos tecnología; construimos soluciones
-          integrales. Nuestra pasión por la innovación y el compromiso con la
-          calidad nos convierten en los aliados estratégicos que tu empresa
-          necesita.
-          <br /><br />
-          Combinamos años de experiencia con un enfoque personalizado,
-          diseñando y ejecutando proyectos que garantizan la eficiencia,
-          seguridad y crecimiento de tu infraestructura tecnológica.
-        </p>
+    <!-- Imágenes -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-4">
+        <img
+          class="rounded-lg shadow-lg animated-card w-full"
+          src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+          alt="Tecnología avanzada"
+          loading="lazy"
+          onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/9fcc35?text=Tecnología';"
+        />
+        <img
+          class="rounded-lg shadow-lg animated-card w-full"
+          src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80"
+          alt="Equipo de trabajo colaborando"
+          loading="lazy"
+          onerror="this.onerror=null;this.src='https://placehold.co/600x400/4b5563/9fcc35?text=Equipo+Trabajo';"
+        />
       </div>
-      <div class="grid grid-cols-2 gap-4">
-        <div class="space-y-4">
-          <img
-            class="rounded-lg shadow-lg animated-card w-full"
-            src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
-            alt="Tecnología avanzada"
-            onerror="this.onerror=null;this.src='https://placehold.co/600x400/374151/9fcc35?text=Tecnología';"
-          />
-          <img
-            class="rounded-lg shadow-lg animated-card w-full"
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80"
-            alt="Equipo de trabajo colaborando"
-            onerror="this.onerror=null;this.src='https://placehold.co/600x400/4b5563/9fcc35?text=Equipo+Trabajo';"
-          />
-        </div>
-        <div class="space-y-4 mt-8">
-          <img
-            class="rounded-lg shadow-lg animated-card w-full"
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80"
-            alt="Infraestructura tecnológica moderna"
-            onerror="this.onerror=null;this.src='https://placehold.co/600x800/1f2937/9fcc35?text=Infraestructura';"
-          />
-        </div>
+      <div class="space-y-4 mt-4 sm:mt-8">
+        <img
+          class="rounded-lg shadow-lg animated-card w-full h-full object-cover"
+          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80"
+          alt="Infraestructura tecnológica moderna"
+          loading="lazy"
+          onerror="this.onerror=null;this.src='https://placehold.co/600x800/1f2937/9fcc35?text=Infraestructura';"
+        />
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
 <!-- Servicios -->
 <section
@@ -311,79 +294,6 @@
             siempre a la vanguardia.
           </p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Productos -->
-  <section
-    id="productos"
-    class="py-20 bg-gray-900 fade-in"
-    aria-label="Productos destacados"
-  >
-    <div class="max-w-7xl mx-auto px-6">
-      <h2
-        class="text-4xl font-bold text-center mb-12 text-white"
-      >
-        Productos Destacados
-      </h2>
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-6xl mx-auto"
-      >
-        <article
-          class="animated-card bg-gray-800 p-6 rounded-lg shadow-lg text-center"
-          tabindex="0"
-        >
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/888/888857.png"
-            alt="Router Wifi"
-            class="mx-auto mb-4 h-20"
-          />
-          <h3 class="text-xl font-semibold mb-2 text-white">Router Wifi</h3>
-          <p class="text-gray-400 mb-3">Velocidad y cobertura optimizada para tu red.</p>
-          <p class="font-bold text-indigo-400">$120 USD</p>
-        </article>
-        <article
-          class="animated-card bg-gray-800 p-6 rounded-lg shadow-lg text-center"
-          tabindex="0"
-        >
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/266/266192.png"
-            alt="Laptop"
-            class="mx-auto mb-4 h-20"
-          />
-          <h3 class="text-xl font-semibold mb-2 text-white">Laptop</h3>
-          <p class="text-gray-400 mb-3">Equipos portátiles para trabajo y estudio.</p>
-          <p class="font-bold text-indigo-400">$650 USD</p>
-        </article>
-        <article
-          class="animated-card bg-gray-800 p-6 rounded-lg shadow-lg text-center"
-          tabindex="0"
-        >
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/2920/2920310.png"
-            alt="Impresora"
-            class="mx-auto mb-4 h-20"
-          />
-          <h3 class="text-xl font-semibold mb-2 text-white">Impresora</h3>
-          <p class="text-gray-400 mb-3">
-            Alta calidad para impresión en casa o la oficina.
-          </p>
-          <p class="font-bold text-indigo-400">$220 USD</p>
-        </article>
-        <article
-          class="animated-card bg-gray-800 p-6 rounded-lg shadow-lg text-center"
-          tabindex="0"
-        >
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png"
-            alt="Memoria USB"
-            class="mx-auto mb-4 h-20"
-          />
-          <h3 class="text-xl font-semibold mb-2 text-white">Memoria USB</h3>
-          <p class="text-gray-400 mb-3">Almacenamiento portátil rápido y seguro.</p>
-          <p class="font-bold text-indigo-400">$25 USD</p>
-        </article>
       </div>
     </div>
   </section>
