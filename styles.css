@@ -1,0 +1,278 @@
+/* styles.css */
+
+/* --- Reset y base --- */
+body {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  background-color: #121212;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow-x: hidden;
+  z-index: 0;
+}
+
+/* --- Partículas sutiles animadas en fondo solo en body::before --- */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.15) 0%, transparent 25%),
+    radial-gradient(circle at 70% 80%, rgba(79, 70, 229, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 40% 50%, rgba(79, 70, 229, 0.12) 0%, transparent 28%);
+  background-repeat: no-repeat;
+  animation: particlesMove 20s linear infinite;
+  z-index: 0;
+}
+
+@keyframes particlesMove {
+  0% {
+    background-position:
+      10% 20%,
+      70% 80%,
+      40% 50%;
+  }
+  100% {
+    background-position:
+      90% 80%,
+      30% 20%,
+      60% 70%;
+  }
+}
+
+/* --- Iconos .accent-color sin animación, solo color plano --- */
+.accent-color {
+  color: #4f46e5;
+  text-shadow: none !important;
+  animation: none !important;
+}
+
+/* --- Botones con brillo suave en todo el botón, sin sombra atrás --- */
+button,
+a.bg-accent-color {
+  display: inline-block;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  color: #fff;
+  background-color: #4f46e5;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.4s ease,
+    transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  /* Brillo suave en todo el botón */
+  box-shadow: inset 0 0 12px 2px rgba(79, 70, 229, 0.8);
+}
+
+button:hover,
+a.bg-accent-color:hover {
+  background-color: #3730a3;
+  box-shadow: inset 0 0 20px 4px rgba(79, 70, 229, 1);
+  transform: translateY(-3px) scale(1.05);
+}
+
+button:focus-visible,
+a.bg-accent-color:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 2px;
+}
+
+/* Ripple effect on buttons */
+button::after,
+a.bg-accent-color::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  transform: scale(0);
+  opacity: 0.3;
+  background: white;
+  transition: transform 0.5s ease, opacity 1s ease;
+  z-index: 0;
+}
+
+button:active::after,
+a.bg-accent-color:active::after {
+  transform: scale(2);
+  opacity: 0;
+  transition: 0s;
+}
+
+/* --- Cards con brillo en todo el fondo, sin sombras atrás, sin esquinas --- */
+.animated-card {
+  position: relative;
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: inset 0 0 8px 1px rgba(79, 70, 229, 0.5);
+  border: 1px solid rgba(79, 70, 229, 0.3);
+}
+
+.animated-card:hover,
+.animated-card:focus {
+  transform: translateY(-6px);
+  box-shadow:
+    inset 0 0 12px 2px rgba(79, 70, 229, 0.6),
+    0 4px 15px rgba(79, 70, 229, 0.2);
+  border-color: rgba(79, 70, 229, 0.6);
+  outline: none;
+}
+
+/* --- Fade-in para scroll --- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Grid responsive para servicios --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Títulos --- */
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* --- Inputs y textarea --- */
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  border: 1.5px solid transparent;
+  background-color: #1f2937;
+  color: #e0e0e0;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  resize: vertical;
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background-color: #374151;
+}
+
+/* --- Scrollbar personalizado --- */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #4f46e5;
+  border-radius: 4px;
+}
+
+/* --- Loader --- */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #121212;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 1s ease;
+}
+
+#loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-content {
+  text-align: center;
+  color: #4f46e5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.loader-logo {
+  height: 70px;
+  width: auto;
+  animation: pulseZoom 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseZoom {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+.spinner {
+  border: 4px solid rgba(79, 70, 229, 0.2);
+  border-top: 4px solid #4f46e5;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  animation: spin 1.3s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
