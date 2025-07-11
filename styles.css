@@ -268,3 +268,20 @@ section {
     padding: 6rem 2rem;
   }
 }
+
+/* Para que el footer no tape contenido */
+body {
+  padding-bottom: 5rem; /* espacio para footer */
+}
+
+/* Footer */
+footer.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  backdrop-filter: saturate(180%) blur(10px);
+  border-top: 1px solid #333;
+  z-index: 30;
+  font-size: 0.9rem;
+}

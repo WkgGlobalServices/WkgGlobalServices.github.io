@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trabajos Realizados - WKG Global Services</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a2e0e6ad4b.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --color-principal: #6366f1; /* Indigo 500 */
+      --color-fondo-card: #1e293b; /* slate-800 */
+      --color-texto-card: #f9fafb; /* gray-50 */
+    }
+
+    body {
+      background: #0f172a;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color: #f9fafb;
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Fondo dinámico suave y elegante */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(99,102,241,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,102,241,0.07) 1px, transparent 1px),
+        radial-gradient(circle at 25% 25%, rgba(99,102,241,0.15), transparent 60%),
+        radial-gradient(circle at 75% 75%, rgba(147,197,253,0.12), transparent 50%);
+      background-size: 40px 40px, 40px 40px, 300px 300px, 300px 300px;
+      background-repeat: repeat, repeat, no-repeat, no-repeat;
+      z-index: 0;
+      filter: blur(10px);
+      animation: bgMove 80s linear infinite;
+    }
+
+    @keyframes bgMove {
+      0% {
+        background-position: 0 0, 0 0, 25% 25%, 75% 75%;
+      }
+      100% {
+        background-position: 40px 40px, 40px 40px, 30% 30%, 70% 70%;
+      }
+    }
+
+    /* Contenedor principal */
+    #app-container {
+      position: relative;
+      z-index: 10;
+      padding: 5rem 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Navbar */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background-color: #111827;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 20;
+      box-shadow: 0 2px 10px rgb(0 0 0 / 0.6);
+    }
+
+    header a.logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #c7d2fe;
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    header a.logo img {
+      height: 2.5rem;
+      width: auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.25rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #c7d2fe;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.3s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus-visible {
+      background-color: var(--color-principal);
+      outline-offset: 2px;
+      outline: 2px solid var(--color-principal);
+      color: #e0e7ff;
+    }
+
+    /* Espacio para navbar fijo */
+    main, section {
+      margin-top: 4.5rem;
+    }
+
+    /* Título y descripción */
+    .title-section {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .title-section h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-principal);
+      margin-bottom: 0.5rem;
+    }
+
+    .title-section p {
+      color: #94a3b8;
+      font-size: 1.125rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Filtros */
+    .filtros-container {
+      text-align: center;
+      margin-bottom: 2rem;
+      user-select: none;
+    }
+
+    .filtros-container button {
+      background-color: #374151;
+      color: #e0e7ff;
+      border: none;
+      margin: 0 0.3rem 0.6rem 0.3rem;
+      padding: 0.4rem 1.1rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: inset 0 0 0 0 transparent;
+    }
+    .filtros-container button:hover,
+    .filtros-container button:focus-visible {
+      background-color: var(--color-principal);
+      color: #e0e7ff;
+      outline-offset: 2px;
+      outline: 2px solid var(--color-principal);
+      box-shadow: 0 0 8px var(--color-principal);
+    }
+    .filtros-container button[aria-pressed="true"] {
+      background-color: var(--color-principal);
+      color: #e0e7ff;
+      box-shadow: 0 0 10px var(--color-principal);
+      cursor: default;
+    }
+
+    /* Grid de cards */
+    #trabajos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+.trabajo-card {
+  position: relative;
+  background-color: var(--color-fondo-card);
+  color: var(--color-texto-card);
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  outline: none;
+  display: flex;
+  flex-direction: column;
+
+  /* Animación de entrada */
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease,
+    transform 0.3s ease; /* para hover */
+
+  border: 3px solid transparent;
+  padding: 0;
+  z-index: 0;
+}
+
+/* Cuando la card es visible (animación de entrada completada) */
+.trabajo-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Glow animado borde que recorre todo el perímetro */
+
+.trabajo-card::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 1rem;
+  pointer-events: none;
+  border: 3px solid transparent;
+
+  /* Gradiente lineal diagonal que crea luz brillante en el borde */
+  background: 
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(99, 102, 241, 0.8) 40%,
+      rgba(99, 102, 241, 0.8) 60%,
+      transparent 100%
+    );
+
+  background-size: 200% 200%;
+  background-repeat: no-repeat;
+
+  animation: border-light-move 3s linear infinite;
+
+  z-index: 10;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.trabajo-card:hover::before,
+.trabajo-card:focus-visible::before {
+  opacity: 1;
+}
+
+@keyframes border-light-move {
+  0% {
+    background-position: 200% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
+}
+
+
+    /* Imagen */
+    .trabajo-card img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      user-select: none;
+    }
+
+    /* Texto */
+    .trabajo-info {
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .trabajo-info svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: var(--color-principal);
+      flex-shrink: 0;
+    }
+
+    /* Responsive ajustes */
+    @media (max-width: 1024px) {
+      .trabajo-card img {
+        aspect-ratio: 4 / 3;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #trabajos-grid {
+        grid-template-columns: 1fr;
+        padding: 0.5rem;
+      }
+      .trabajo-card {
+        border-width: 2px;
+        min-height: auto;
+      }
+      .trabajo-info {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+      }
+    }
+
+    /* Modal */
+    #modal {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding: 1rem;
+    }
+    #modal.active {
+      display: flex;
+    }
+    #modal-content {
+      background: #1e293b;
+      border-radius: 1rem;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+      position: relative;
+      box-sizing: border-box;
+      color: #f9fafb;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      animation: fadeInModal 0.4s ease forwards;
+    }
+    @keyframes fadeInModal {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    #modal-close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--color-principal);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    #modal-close-btn:hover,
+    #modal-close-btn:focus-visible {
+      color: #a5b4fc;
+      outline-offset: 3px;
+      outline: 2px solid #a5b4fc;
+    }
+
+    #modal-image {
+      width: 100%;
+      border-radius: 1rem;
+      object-fit: contain;
+      max-height: 60vh;
+      user-select: none;
+      margin-bottom: 1rem;
+      box-shadow: none;
+    }
+    #modal-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--color-principal);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #modal-desc {
+      font-size: 1.125rem;
+      line-height: 1.5;
+      color: #d1d5db;
+      margin-bottom: 1rem;
+      user-select: text;
+    }
+    #modal-extra {
+      font-size: 1rem;
+      color: #9ca3af;
+      user-select: text;
+    }
+
+    /* Scrollbar modal */
+    #modal-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    #modal-content::-webkit-scrollbar-thumb {
+      background-color: var(--color-principal);
+      border-radius: 4px;
+    }
+    #modal-content::-webkit-scrollbar-track {
+      background: #1e293b;
+    }
+
+    /* Focus outline global */
+    :focus-visible {
+      outline-offset: 3px;
+      outline: 2px solid var(--color-principal);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 640px) {
+      header {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        padding: 1rem;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      .trabajo-card {
+        min-height: auto;
+      }
+      #modal-content {
+        max-height: 80vh;
+        padding: 1rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <a href="index.html" class="logo" aria-label="Ir a la página principal">
+      <img src="https://i.imgur.com/mGGnbIZ.png" alt="Logo WKG Global Services" />
+      WKG Global Services
+    </a>
+    <nav role="navigation" aria-label="Menú principal">
+      <ul>
+        <li><a href="#trabajos-grid">Galería</a></li>
+        <li><a href="index.html">Inicio</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="app-container" role="main" tabindex="-1">
+
+    <section class="title-section" aria-label="Introducción">
+      <h1>Trabajos Realizados</h1>
+      <p>
+        Descubre algunos de nuestros proyectos en etiquetas, impresiones, toppers, encuadernaciones y más. Haz clic en cualquiera para ver más detalles.
+      </p>
+    </section>
+
+    <section class="filtros-container" role="region" aria-label="Filtros de categorías">
+      <button type="button" aria-pressed="true" onclick="filterTrabajos('Todos')" id="filtro-Todos">Todos</button>
+      <button type="button" aria-pressed="false" onclick="filterTrabajos('Etiquetas')" id="filtro-Etiquetas">Etiquetas</button>
+      <button type="button" aria-pressed="false" onclick="filterTrabajos('Toppers')" id="filtro-Toppers">Toppers</button>
+      <button type="button" aria-pressed="false" onclick="filterTrabajos('Encuadernación')" id="filtro-Encuadernación">Encuadernación</button>
+      <button type="button" aria-pressed="false" onclick="filterTrabajos('Impresiones')" id="filtro-Impresiones">Impresiones</button>
+      <button type="button" aria-pressed="false" onclick="filterTrabajos('Diseños')" id="filtro-Diseños">Diseños</button>
+    </section>
+
+    <section id="trabajos-grid" aria-live="polite" aria-label="Galería de trabajos"></section>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" tabindex="-1">
+    <div id="modal-content">
+      <button id="modal-close-btn" aria-label="Cerrar ventana modal" onclick="closeModal()">&times;</button>
+      <img id="modal-image" src="" alt="Imagen del trabajo" />
+      <h2 id="modal-title"><!-- título dinámico --></h2>
+      <p id="modal-desc"><!-- descripción dinámica --></p>
+      <p id="modal-extra"><!-- info extra --></p>
+    </div>
+  </div>
+
+<!-- al final del body, antes de </body> -->
+<footer class="footer bg-[#111827] text-gray-300 py-6 mt-12 w-full text-center select-none" role="contentinfo">
+  <div class="max-w-4xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+    <div>
+      <p>© 2025 WKG Global Services. Todos los derechos reservados.</p>
+    </div>
+    <div class="flex gap-6 text-indigo-400">
+      <a href="https://facebook.com/wkgglobalservices" target="_blank" rel="noopener" aria-label="Facebook WKG Global Services" class="hover:text-indigo-600 transition">
+        <i class="fab fa-facebook-f fa-lg"></i>
+      </a>
+      <a href="https://instagram.com/wkgglobalservices" target="_blank" rel="noopener" aria-label="Instagram WKG Global Services" class="hover:text-indigo-600 transition">
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      <a href="https://linktr.ee/wkgglobalservices" target="_blank" rel="noopener" aria-label="Linktree" class="hover:text-indigo-600 transition">
+        <i class="fab fa-twitter fa-lg"></i>
+      </a>
+      <a href="wkgglobalservices@gmail.com" aria-label="Correo de contacto WKG Global Services" class="hover:text-indigo-600 transition">
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // Datos trabajos (ejemplo extendido)
+  const trabajos = [
+    { src:"assets/Trabajos Papeleria/1.jpg", alt:"Trabajo 1", titulo:"Diseño de Etiqueta 1", descripcion:"Etiqueta personalizada para cuaderno escolar.", categoria:"Etiquetas", extra:"Tamaño: 5x5 cm | Material: Papel adhesivo" },
+    { src:"assets/Trabajos Papeleria/2.jpg", alt:"Trabajo 2", titulo:"Toppers para cumpleaños 1", descripcion:"Diseño y corte de toppers temático para casino.", categoria:"Toppers", extra:"Corte láser" },
+    { src:"assets/Trabajos Papeleria/3.jpg", alt:"Trabajo 3", titulo:"Diseño de Etiqueta 2", descripcion:"Etiqueta personalizada para cuaderno escolar utiles etc.", categoria:"Etiquetas", extra:"Papel Edhesivo" },
+    { src:"assets/Trabajos Papeleria/4.jpg", alt:"Trabajo 4", titulo:"Diseño Para Carpetas Personalizadas 1", descripcion:"Impresión de alta calidad y Diseño para la Portada de una Carpeta.", categoria:"Impresiones", extra:"Carpeta Carta | Diseño De Portada" },
+    { src:"assets/Trabajos Papeleria/5.jpg", alt:"Trabajo 5", titulo:"Topper Para Torta 2", descripcion:"Diseño creativo Tematica de Doctora.", categoria:"Toppers", extra:"Diseño totalmente hecho desde 0" },
+    { src:"assets/Trabajos Papeleria/6.jpg", alt:"Trabajo 6", titulo:"Topper Para Torta 3", descripcion:"Diseño para Torta Completo Con Tematica de Capitan America.", categoria:"Toppers", extra:"Diseño Completo" },
+    { src:"assets/Trabajos Papeleria/7.jpg", alt:"Trabajo 7", titulo:"Toppers Para Torta 4", descripcion:"Toppers personalizados para Compleaños Tematica Vallet.", categoria:"Toppers", extra:"Impresión a todo color" },
+    { src:"assets/Trabajos Papeleria/8.jpg", alt:"Trabajo 8", titulo:"Diseño de Etiqueta 3", descripcion:"Etiqueta personalizada tematica rayo macqueen", categoria:"Etiquetas", extra:"Diseño hecho desde 0" },
+    { src:"assets/Trabajos Papeleria/9.jpg", alt:"Trabajo 9", titulo:"Diseño Completo Topper 5", descripcion:"Diseño Completo Topper para Torta Tematica Playera.", categoria:"Toppers", extra:"Diseño Realizado desde 0 " },
+    { src:"assets/Trabajos Papeleria/10.jpg", alt:"Trabajo 10", titulo:"Diseño Completo Topper 6", descripcion:"Creación de Diseño para Topper Para Torta de Bob Esponja.", categoria:"Toppers", extra:"Formato vectorial escalable" },
+    { src:"assets/Trabajos Papeleria/11.jpg", alt:"Trabajo 11", titulo:"Regalo de Cumpleaños", descripcion:"Creación de Regalo de Cumpleaños.", categoria:"Diseños", extra:"Hecho al gusto del cliente" },
+    { src:"assets/Trabajos Papeleria/12.jpg", alt:"Trabajo 12", titulo:"Diseño Topper Cumpleaños 7", descripcion:"Creación de Diseño para Topper Para Torta de Cumpleaños.", categoria:"Toppers", extra:"Realizado al gusto del cliente" },
+    { src:"assets/Trabajos Papeleria/13.jpg", alt:"Trabajo 13", titulo:"Diseño Completo de Cuaderno", descripcion:"Creación de Diseño para Completo para Cuaderno.", categoria:"Encuadernación", extra:"Hecho Desde 0" },
+    { src:"assets/Trabajos Papeleria/14.jpg", alt:"Trabajo 14", titulo:"Diseño Completo de Cuaderno", descripcion:"Creación de Diseño para Completo para Cuaderno.", categoria:"Encuadernación", extra:"Hecho Desde 0 Al gusto del cliente" },
+    { src:"assets/Trabajos Papeleria/15.jpg", alt:"Trabajo 15", titulo:"Diseño Completo de Etiquetas 4", descripcion:"Diseño personalizado de etiquetas con tematica de hospital.", categoria:"Etiquetas", extra:"Hecho al gusto del cliente tematica unica" },
+    { src:"assets/Trabajos Papeleria/16.jpg", alt:"Trabajo 16", titulo:"Diseño Completo de Etiquetas 5", descripcion:"Creación de Diseño para Etiquetas de Compras.", categoria:"Etiquetas", extra:"Hecho desde 0 personalizadas al gusto del cliente" },
+    { src:"assets/Trabajos Papeleria/17.jpg", alt:"Trabajo 17", titulo:"Diseño Completo de Etiquetas 6", descripcion:"Creación de Diseño para Etiquetas Con tematica de karate.", categoria:"Etiquetas", extra:"Hecho desde 0 personalizadas al gusto del cliente Karate" },
+    { src:"assets/Trabajos Papeleria/18.jpg", alt:"Trabajo 18", titulo:"Diseño Topper Cumpleaños Vallet 8", descripcion:"Creación de Diseño para Topper Para Torta de Vallet.", categoria:"Toppers", extra:"Realizado al gusto del cliente" },
+    { src:"assets/Trabajos Papeleria/19.jpg", alt:"Trabajo 19", titulo:"Diseño Completo Topper 9", descripcion:"Creación de Diseño para Topper Para Torta de Cumpleaños.", categoria:"Toppers", extra:"Realizado al gusto del cliente" },
+    { src:"assets/Trabajos Papeleria/20.jpg", alt:"Trabajo 20", titulo:"Diseño Completo Topper 10", descripcion:"Creación de Diseño para Topper Para Torta de el Dia de las Madres.", categoria:"Toppers", extra:"Realizado al gusto del cliente" },
+    { src:"assets/Trabajos Papeleria/21.jpg", alt:"Trabajo 21", titulo:"Diseño de Etiquetas 7 ", descripcion:"Creación de Diseño para Etiquetas de Basketball.", categoria:"Etiquetas", extra:"Formato Adaptable" },
+    { src:"assets/Trabajos Papeleria/22.jpg", alt:"Trabajo 22", titulo:"Diseño Completo Topper 11", descripcion:"Creación de Diseño para Topper Para Torta .", categoria:"Toppers", extra:"Desde 0" },
+    { src:"assets/Trabajos Papeleria/23.jpg", alt:"Trabajo 23", titulo:"Diseño Completos", descripcion:"Creación de Diseño para el dia de la madre.", categoria:"Diseños", extra:"Formato con tematica personalizada" },
+    { src:"assets/Trabajos Papeleria/24.jpg", alt:"Trabajo 24", titulo:"Diseño Completo Topper 12", descripcion:"Creación de Diseño para Topper Para Torta.", categoria:"Toppers", extra:"Hecho al gusto del cliente" },
+    { src:"assets/Trabajos Papeleria/25.jpg", alt:"Trabajo 25", titulo:"Diseño Completo Topper 13", descripcion:"Creación de Diseño para Topper Para Torta de la sirenita.", categoria:"Toppers", extra:"Formato realizado al gusto del cliente" },
+    { src:"assets/Trabajos Papeleria/26.jpg", alt:"Trabajo 26", titulo:"Diseño Completo de etiquetas 8", descripcion:"Creación de Diseño para etiquetas para negocio .", categoria:"Etiquetas", extra:"Realizado desde 0 al gusto del cliente" }
+  ];
+
+  const trabajosGrid = document.getElementById("trabajos-grid");
+  const filtroBtns = document.querySelectorAll(".filtros-container button");
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modal-image");
+  const modalTitle = document.getElementById("modal-title");
+  const modalDesc = document.getElementById("modal-desc");
+  const modalExtra = document.getElementById("modal-extra");
+
+  // Mostrar trabajos en grid según filtro
+  function renderTrabajos(filtro="Todos") {
+    trabajosGrid.innerHTML = "";
+    let trabajosFiltrados = filtro === "Todos"
+      ? trabajos
+      : trabajos.filter(t => t.categoria === filtro);
+
+    if(trabajosFiltrados.length === 0) {
+      trabajosGrid.innerHTML = "<p class='text-center text-gray-400'>No hay trabajos para esta categoría.</p>";
+      return;
+    }
+
+    trabajosFiltrados.forEach((t, i) => {
+      const card = document.createElement("article");
+      card.className = "trabajo-card";
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", `${t.titulo}. Ver detalles`);
+      card.dataset.index = trabajos.indexOf(t);
+
+      // Imagen con lazy loading
+      const img = document.createElement("img");
+      img.src = t.src;
+      img.alt = t.alt;
+      img.loading = "lazy";
+
+      // Texto + icono info
+      const info = document.createElement("div");
+      info.className = "trabajo-info";
+      info.innerHTML = `<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" aria-label="Icono de información"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18a8 8 0 110-16 8 8 0 010 16zM11 7h2v6h-2zm0 8h2v2h-2z"/></svg><span>${t.titulo}</span>`;
+      
+      card.appendChild(img);
+      card.appendChild(info);
+
+      // Evento para abrir modal
+      card.addEventListener("click", () => openModal(trabajos.indexOf(t)));
+      card.addEventListener("keydown", e => {
+        if(e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openModal(trabajos.indexOf(t));
+        }
+      });
+
+      trabajosGrid.appendChild(card);
+    });
+
+    // Aplicar animación de entrada con IntersectionObserver
+    initScrollAnimations();
+  }
+
+  // Manejo filtros con indicador aria-pressed
+  function filterTrabajos(categoria) {
+    filtroBtns.forEach(btn => {
+      btn.setAttribute("aria-pressed", btn.textContent === categoria ? "true" : "false");
+    });
+    renderTrabajos(categoria);
+  }
+
+  // Modal funciones
+  function openModal(index) {
+    const t = trabajos[index];
+    modalImg.src = t.src;
+    modalImg.alt = t.alt;
+    modalTitle.textContent = t.titulo;
+    modalDesc.textContent = t.descripcion;
+    modalExtra.textContent = t.extra || "";
+    modal.classList.add("active");
+    modal.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove("active");
+    // Restaurar foco al grid
+    const focusedCard = trabajosGrid.querySelector(`.trabajo-card[data-index="${trabajos.findIndex(t => t.titulo === modalTitle.textContent)}"]`);
+    if(focusedCard) focusedCard.focus();
+  }
+
+  // Cerrar modal con ESC
+  window.addEventListener("keydown", e => {
+    if(e.key === "Escape" && modal.classList.contains("active")) {
+      closeModal();
+    }
+  });
+
+  // Animación scroll con IntersectionObserver
+  function initScrollAnimations() {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".trabajo-card").forEach(card => {
+      observer.observe(card);
+    });
+  }
+
+  // Inicializar mostrando todos
+  renderTrabajos();
+</script>
+</body>
+</html>
