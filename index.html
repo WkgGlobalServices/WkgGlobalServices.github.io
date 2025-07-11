@@ -588,113 +588,121 @@
   </section>
 
   <!-- Contacto -->
-  <footer
-    id="contacto"
-    class="bg-gray-900 border-t-4 border-accent-color pt-16 pb-8 text-center fade-in"
-  >
-    <div class="max-w-3xl mx-auto px-6">
-      <img
-        src="https://i.imgur.com/mGGnbIZ.png"
-        alt="Logo WKG Global Services"
-        class="h-32 mx-auto mb-6"
-        onerror="this.onerror=null;this.src='https://placehold.co/300x75/121212/4f46e5?text=WKG+Global+Services';"
+<footer
+  id="contacto"
+  class="bg-gray-900 border-t-4 border-accent-color pt-16 pb-8 text-center fade-in"
+>
+  <div class="max-w-3xl mx-auto px-6">
+    <img
+      src="https://i.imgur.com/mGGnbIZ.png"
+      alt="Logo WKG Global Services"
+      class="h-32 mx-auto mb-6"
+      onerror="this.onerror=null;this.src='https://placehold.co/300x75/121212/4f46e5?text=WKG+Global+Services';"
+    />
+    <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Contáctanos</h3>
+    <p class="text-gray-400 mb-8">
+      Estamos listos para ayudarte a impulsar tu negocio.
+    </p>
+
+    <!-- Formulario de contacto -->
+    <form
+      id="contact-form"
+      action="https://formspree.io/f/mzzgnryn"
+      method="POST"
+      class="max-w-lg mx-auto space-y-6 text-left"
+      aria-label="Formulario de contacto"
+      novalidate
+    >
+      <label for="nombre" class="block mb-1 font-semibold text-gray-300">Nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        name="nombre"
+        placeholder="Tu nombre completo"
+        required
       />
-      <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">
-        Contáctanos
-      </h3>
-      <p class="text-gray-400 mb-8">
-        Estamos listos para ayudarte a impulsar tu negocio.
-      </p>
 
-      <form
-        id="contact-form"
-        action="https://formspree.io/f/mzzgnryn"
-        method="POST"
-        class="max-w-lg mx-auto space-y-6 text-left"
-        aria-label="Formulario de contacto"
-        novalidate
+      <label for="email" class="block mb-1 font-semibold text-gray-300">Correo electrónico</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="tu@correo.com"
+        required
+      />
+
+      <label for="mensaje" class="block mb-1 font-semibold text-gray-300">Mensaje</label>
+      <textarea
+        id="mensaje"
+        name="mensaje"
+        rows="4"
+        placeholder="Escribe tu consulta o mensaje aquí..."
+        required
+      ></textarea>
+
+      <button
+        type="submit"
+        class="bg-accent-color hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full w-full"
       >
-        <label for="nombre" class="block mb-1 font-semibold text-gray-300"
-          >Nombre</label
-        >
-        <input
-          type="text"
-          id="nombre"
-          name="nombre"
-          placeholder="Tu nombre completo"
-          required
-        />
+        Enviar mensaje
+      </button>
+    </form>
 
-        <label for="email" class="block mb-1 font-semibold text-gray-300"
-          >Correo electrónico</label
-        >
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="tu@correo.com"
-          required
-        />
-
-        <label for="mensaje" class="block mb-1 font-semibold text-gray-300"
-          >Mensaje</label
-        >
-        <textarea
-          id="mensaje"
-          name="mensaje"
-          rows="4"
-          placeholder="Escribe tu consulta o mensaje aquí..."
-          required
-        ></textarea>
-
-        <button
-          type="submit"
-          class="bg-accent-color hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full w-full"
-        >
-          Enviar mensaje
-        </button>
-      </form>
-
-      <div class="mt-8 flex justify-center items-center space-x-6 text-gray-400">
-        <a
-          href="https://wa.me/+584245552480"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="WhatsApp"
-          class="hover:text-green-500 transition text-3xl"
-          ><i class="fab fa-whatsapp"></i
-        ></a>
-        <a
-          href="https://facebook.com/wkgglobalservices"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-          class="hover:text-blue-600 transition text-3xl"
-          ><i class="fab fa-facebook"></i
-        ></a>
-        <a
-          href="https://instagram.com/wkgglobalservices"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-          class="hover:text-pink-500 transition text-3xl"
-          ><i class="fab fa-instagram"></i
-        ></a>
-        <a
-          href="https://linktr.ee/wkgglobalservices"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Linktree"
-          class="hover:text-indigo-400 transition text-3xl"
-          ><i class="fas fa-link"></i
-        ></a>
-      </div>
-
-      <div class="mt-10 text-gray-500 text-sm">
-        &copy; 2025 WKG Global Services. Todos los derechos reservados.
-      </div>
+    <!-- Mapa Interactivo -->
+    <div class="mt-12 rounded-xl overflow-hidden shadow-lg border-2 border-indigo-600">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.454227891187!2d-69.38352382391881!3d10.06181739004677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e87673fd99e70e7%3A0xe8b58706f0155bf0!2sWKG%20Global%20Services%20C.A!5e0!3m2!1ses-419!2sve!4v1752205705547!5m2!1ses-419!2sve"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
     </div>
-  </footer>
+
+    <!-- Redes sociales -->
+    <div class="mt-8 flex justify-center items-center space-x-6 text-gray-400">
+      <a
+        href="https://wa.me/+584245552480"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp"
+        class="hover:text-green-500 transition text-3xl"
+        ><i class="fab fa-whatsapp"></i
+      ></a>
+      <a
+        href="https://facebook.com/wkgglobalservices"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+        class="hover:text-blue-600 transition text-3xl"
+        ><i class="fab fa-facebook"></i
+      ></a>
+      <a
+        href="https://instagram.com/wkgglobalservices"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        class="hover:text-pink-500 transition text-3xl"
+        ><i class="fab fa-instagram"></i
+      ></a>
+      <a
+        href="https://linktr.ee/wkgglobalservices"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Linktree"
+        class="hover:text-indigo-400 transition text-3xl"
+        ><i class="fas fa-link"></i
+      ></a>
+    </div>
+
+    <div class="mt-10 text-gray-500 text-sm">
+      &copy; 2025 WKG Global Services. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
+
 
   <!-- Modal Confirmación -->
   <div
