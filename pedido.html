@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pedido - WKG Global Services</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0 1rem 3rem;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 70% 80%, rgba(79, 70, 229, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 40% 50%, rgba(79, 70, 229, 0.12) 0%, transparent 28%);
+      background-repeat: no-repeat;
+      animation: particlesMove 20s linear infinite;
+      z-index: 0;
+    }
+    @keyframes particlesMove {
+      0% { background-position: 10% 20%, 70% 80%, 40% 50%; }
+      100% { background-position: 90% 80%, 30% 20%, 60% 70%; }
+    }
+    .container {
+      max-width: 600px;
+      margin: 3rem auto 2rem;
+      background: rgba(31, 41, 55, 0.85);
+      padding: 3rem 2.5rem;
+      border-radius: 1rem;
+      box-shadow: inset 0 0 12px 2px rgba(79, 70, 229, 0.7);
+      position: relative;
+      z-index: 1;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    header img {
+      width: 140px;
+      height: auto;
+      display: block;
+      margin: 0 auto 0.5rem;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      color: #4f46e5;
+      margin: 0;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(79, 70, 229, 0.7);
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    label {
+      font-weight: 600;
+      color: #9ca3af;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.85rem 1.25rem;
+      border-radius: 0.5rem;
+      border: 1.5px solid transparent;
+      background-color: #374151;
+      color: #e0e0e0;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #4f46e5;
+      background-color: #1f2937;
+    }
+    button {
+      background-color: #4f46e5;
+      color: #fff;
+      font-weight: 600;
+      padding: 1rem 0;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      box-shadow: inset 0 0 12px 2px rgba(79, 70, 229, 0.9);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    button:hover, button:focus {
+      background-color: #3730a3;
+      transform: translateY(-3px) scale(1.05);
+    }
+    #otros-productos-container {
+      display: none;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    @media (max-width: 640px) {
+      .container {
+        margin: 2rem 1rem 2rem;
+        padding: 2rem 1.5rem;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://i.imgur.com/mGGnbIZ.png" alt="Logo WKG Global Services" />
+    <h1>WKG Global Services</h1>
+  </header>
+
+  <main class="container">
+    <h2 style="text-align:center; color:#a5b4fc; margin-bottom:1.5rem;">Realiza tu pedido</h2>
+    <form id="pedido-form" onsubmit="return enviarWhatsApp()">
+      <label for="nombre"><i class="fa fa-user"></i> Nombre completo</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required />
+
+      <label for="apellido"><i class="fa fa-user"></i> Apellido</label>
+      <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required />
+
+      <label for="email"><i class="fa fa-envelope"></i> Correo electrónico</label>
+      <input type="email" id="email" name="email" placeholder="tu@correo.com" required />
+
+      <label for="producto"><i class="fa fa-box"></i> Selecciona el producto</label>
+      <select id="producto" name="producto" required onchange="mostrarOtrosProducto(this.value)">
+        <option value="" disabled selected>-- Selecciona un producto --</option>
+        <option>Impresiones</option>
+        <option>Copias</option>
+        <option>Curriculum</option>
+        <option>Sacar RIF</option>
+        <option>Sacar Cédula</option>
+        <option>Etiquetas Personalizadas</option>
+        <option>Toppers Personalizados</option>
+        <option>Diseños Personalizados</option>
+        <option>Escanear</option>
+        <option>Redactar un trabajo</option>
+        <option>Hacer un trabajo</option>
+        <option>Hacer cita para RIF</option>
+        <option>Hacer cita para sacar cédula</option>
+        <option>Reestablecer contraseñas de banco</option>
+        <option>Hacer pagos de bancos</option>
+        <option>Realizar cualquier consulta en banco</option>
+        <option>Realizar consulta de los productos</option>
+        <option value="otros">Otros productos</option>
+      </select>
+
+      <div id="otros-productos-container">
+        <label for="otros-productos"><i class="fa fa-pen"></i> Especifica otros productos</label>
+        <textarea id="otros-productos" name="otros-productos" rows="3" placeholder="Escribe aquí otros productos o detalles..."></textarea>
+      </div>
+
+      <label for="cantidad"><i class="fa fa-sort-numeric-up"></i> Cantidad</label>
+      <input type="number" id="cantidad" name="cantidad" min="1" value="1" required />
+
+      <label for="detalles"><i class="fa fa-info-circle"></i> Detalles adicionales del producto</label>
+      <textarea id="detalles" name="detalles" rows="4" placeholder="Describe cómo quieres tu producto, especificaciones, etc."></textarea>
+
+      <button type="submit"><i class="fab fa-whatsapp"></i> Enviar pedido</button>
+    </form>
+  </main>
+
+  <script>
+    function mostrarOtrosProducto(value) {
+      const container = document.getElementById('otros-productos-container');
+      if (value === 'otros') {
+        container.style.display = 'flex';
+        document.getElementById('otros-productos').required = true;
+      } else {
+        container.style.display = 'none';
+        document.getElementById('otros-productos').required = false;
+      }
+    }
+
+    function enviarWhatsApp() {
+      const nombre = document.getElementById('nombre').value.trim();
+      const apellido = document.getElementById('apellido').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const producto = document.getElementById('producto').value;
+      const otrosProducto = document.getElementById('otros-productos').value.trim();
+      const cantidad = document.getElementById('cantidad').value.trim();
+      const detalles = document.getElementById('detalles').value.trim();
+
+      const textoProducto = producto === 'otros' ? otrosProducto : producto;
+
+      let mensaje = `*Nuevo pedido desde la web*\n`;
+      mensaje += `*Nombre:* ${nombre} ${apellido}\n`;
+      mensaje += `*Correo:* ${email}\n`;
+      mensaje += `*Producto:* ${textoProducto}\n`;
+      mensaje += `*Cantidad:* ${cantidad}\n`;
+      mensaje += `*Detalles adicionales:* ${detalles || 'Ninguno'}\n`;
+
+      const url = `https://wa.me/584245552480?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, '_blank');
+      return false;
+    }
+  </script>
+</body>
+</html>
