@@ -183,6 +183,56 @@ a.bg-accent-color:active::after {
   line-height: 1.6;
 }
 
+/* Equipo: Cards */
+#equipo .bg-gray-900 {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+#equipo .bg-gray-900:hover,
+#equipo .bg-gray-900:focus-within {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 20px 30px rgba(99, 102, 241, 0.5);
+  z-index: 10;
+}
+
+#equipo img {
+  border: 4px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+#equipo .bg-gray-900:hover img,
+#equipo .bg-gray-900:focus-within img {
+  border-color: #6366f1; /* indigo-500 */
+}
+
+/* Nuestro Proceso: Lista */
+#proceso ol li {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: default;
+}
+
+#proceso ol li:hover,
+#proceso ol li:focus-within {
+  background-color: rgba(99, 102, 241, 0.1);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+#proceso ol li span {
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#proceso ol li:hover span,
+#proceso ol li:focus-within span {
+  background-color: #6366f1; /* indigo-500 */
+  box-shadow: 0 0 8px #6366f1;
+}
+
+
 /* --- Fade-in scroll --- */
 .fade-in {
   opacity: 0;
@@ -259,6 +309,14 @@ body::-webkit-scrollbar-thumb {
   background-color: #4f46e5;
   border-radius: 4px;
 }
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 80px; /* lo sube 60px más */
+  right: 20px;
+  /* demás estilos */
+}
+
 
 /* --- Loader --- */
 #loader {
