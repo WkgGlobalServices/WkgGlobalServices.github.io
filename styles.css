@@ -155,6 +155,34 @@ a.bg-accent-color:active::after {
   backdrop-filter: blur(4px);
 }
 
+.faq-card {
+  background-color: rgba(31, 41, 55, 0.9); /* bg-gray-800 con opacidad */
+  border-radius: 1rem;
+  padding: 1.5rem;
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+}
+
+.faq-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--accent-color, #4f46e5);
+}
+
+.faq-card p {
+  color: #9ca3af;
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+
 /* --- Fade-in scroll --- */
 .fade-in {
   opacity: 0;
